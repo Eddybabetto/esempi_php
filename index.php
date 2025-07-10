@@ -1,7 +1,7 @@
 <h1>ciao</h1>
 
 <?php
-
+error_reporting(E_ALL);
 echo "ciao sono un codice php";
 echo "<h2>ciao sono un codice php</h2>";
 
@@ -11,7 +11,7 @@ echo $variabile . "</br>";
 
 $variabile = 7;
 
-echo $variabile . "</br>";;
+echo $variabile . "</br>";
 
 $variabile_che_non_esiste = NULL;
 echo $variabile_che_non_esiste . "</br>";;
@@ -109,5 +109,134 @@ $array_castato = [
 ];
 
 echo var_dump($array_castato) . "</br>";
+
+
+
+echo "</br>";
+echo "-------------------------------------";
+echo "</br>";
+class Studente
+{
+
+  public $altezza;
+
+  public function __construct($altezza)
+  {
+    $this->altezza = $altezza;
+  }
+
+
+  public function getAltezza()
+  {
+    return $this->altezza;
+  }
+
+  public static function calcolaMediaVoti(array $array_voti): float
+  {
+    return array_sum($array_voti) / count($array_voti);
+  }
+}
+
+$studente = new Studente(180);
+// $altezza_studente = $studente->getAltezza();
+$altezza_studente = $studente->altezza;
+echo "l' altezza dello studente in cm è $altezza_studente";
+
+echo "</br>";
+echo "-------------------------------------";
+echo "</br>";
+
+
+echo "media voti " . Studente::calcolaMediaVoti([1, 2, 3, 4, 6]);
+
+echo "</br>";
+echo "-------------------------------------";
+echo "</br>
+Variabili variabili";
+echo "</br>";
+$nome = "pippo";
+
+echo $nome;
+echo "</br>";
+$$nome = 'topolino';
+
+echo $pippo;
+echo "</br>";
+echo $$nome;
+echo "</br>";
+$nome = 'aaaa';
+
+echo $pippo;
+echo "</br>";
+echo $$nome;
+echo "</br>";
+
+
+
+$mostra = !true;
+
+?>
+
+<?php if ($mostra): ?>
+
+  <h1> ciao sono il then </h1>
+
+<?php else: ?>
+
+  <h1> ciao sono l' else </h1>
+
+<?php endif ?>
+
+<?php
+$array = [1, 2, 3, 17];
+
+foreach ($array as $value) {
+  echo "Current element of \$array: $value.\n";
+}
+echo "</br>";
+/* Example: key and value */
+$array = [
+  "one" => 1,
+  "two" => 2,
+  "three" => 3,
+  "seventeen" => 17
+];
+
+foreach ($array as $key => $value) {
+  echo "Key: $key => Value: $value\n";
+}
+
+echo "</br>";
+echo "</br>";
+$var = 5;
+$var2 = 6;
+
+switch ($var) {
+  case $var2:
+    echo "sono il 5";
+    break;
+  case 10:
+    echo "sono il 10";
+    break;
+  default:
+    echo "sono default";
+    break;
+}
+
+echo "</br>";
+echo "</br>";
+
+switch (true) {
+  case $var2 == $var:
+    echo "sono uguali";
+    break;
+  case $var2 > $var:
+    echo "var2 maggiore di var";
+    break;
+  default:
+    echo "sono default";
+    break;
+}
+
 
 ?>
