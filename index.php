@@ -1,6 +1,8 @@
 <h1>ciao</h1>
 
 <?php
+
+
 error_reporting(E_ALL);
 echo "ciao sono un codice php";
 echo "<h2>ciao sono un codice php</h2>";
@@ -237,6 +239,11 @@ switch (true) {
     echo "sono default";
     break;
 }
+
+// accedo a file env e popolo una variabile con l'array del contenuto
+$env = parse_ini_file(".env");
+
+print_r($env["API_KEY_FILM_DB"]);
 
 
 ?>

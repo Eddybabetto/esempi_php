@@ -17,7 +17,7 @@
     padding-right: 10px;
   }
 </style>
-
+<!-- la action fa riferimento alla risorsa da chiamare, può essere relativa (parte dalla cartella del file) o assoluta (parte dalla root del server o chiama una risorsa esterna)  -->
 <form action="api/test_form.php" method="post" class="form-example">
   <div class="form-example">
     <label for="name">Nome: </label>
@@ -36,3 +36,7 @@
   </div>
 
 </form>
+
+<script>
+  console.log(document.cookie)
+</script>
