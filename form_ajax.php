@@ -66,7 +66,7 @@
     console.log(formData)
     try {
       document.getElementById("form").innerHTML = "<div class=\"loader \"></div>"
-      const response = await fetch("api/test_form.php", {
+      const response = await fetch("api/test_form_email.php", {
         method: "POST",
         body: formData,
       });

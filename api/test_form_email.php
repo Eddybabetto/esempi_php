@@ -2,6 +2,9 @@
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function
 
+//utilizzare $_POST per inviare una mail seguendo i campi del form
+
+
 require '../PHPMailer/src/Exception.php';
 require '../PHPMailer/src/PHPMailer.php';
 require '../PHPMailer/src/SMTP.php';
@@ -17,7 +20,7 @@ $mail = new PHPMailer(true);
 
 try {
   //Server settings
-  $mail->SMTPDebug = SMTP::DEBUG_LOWLEVEL;                      //Enable verbose debug output
+  $mail->SMTPDebug = SMTP::DEBUG_OFF;                      //Enable verbose debug output
   $mail->isSMTP();                                            //Send using SMTP
   $mail->Host       = $env["EMAIL_HOST"];                     //Set the SMTP server to send through
   $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
