@@ -1,4 +1,6 @@
 <?php
+
+die();
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function
 
@@ -13,16 +15,16 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-$env = parse_ini_file("../.env");
+// $env = parse_ini_file("../.env");
 
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
 try {
   //Server settings
-  $mail->SMTPDebug = SMTP::DEBUG_OFF;                      //Enable verbose debug output
+  $mail->SMTPDebug = SMTP::DEBUG_LOWLEVEL;                      //Enable verbose debug output
   $mail->isSMTP();                                            //Send using SMTP
-  $mail->Host       = $env["EMAIL_HOST"];                     //Set the SMTP server to send through
+  $mail->Host       = $env["MAIL_HOST"];                     //Set the SMTP server to send through
   $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
   $mail->Username   = $env["MAIL_USER"];                     //SMTP username
   $mail->Password   = $env["MAIL_PASSWORD"];                            //SMTP password
@@ -31,7 +33,7 @@ try {
 
   //Recipients
   $mail->setFrom($env["MAIL_USER"]);
-  $mail->addAddress('mindfullstack@gmail.com');     //Add a recipient
+  $mail->addAddress($_POST["email"]);     //Add a recipient
   // $mail->addReplyTo('info@example.com', 'Information');
   // $mail->addCC('cc@example.com');
   // $mail->addBCC('bcc@example.com');
@@ -43,7 +45,7 @@ try {
   //Content
   $mail->isHTML(true);                                  //Set email format to HTML
   $mail->Subject = 'Here is the subject';
-  $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+  $mail->Body    = "<h1>ciao</h1> </br> " . $_POST["email"] . " " . $_POST["name"] . " " . $_POST["last-name"];
   $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
   $mail->send();

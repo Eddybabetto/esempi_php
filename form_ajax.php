@@ -39,19 +39,16 @@
   }
 </style>
 
-<form action="api/test_form.php" class="form-example" id="form">
+<form action="api/test_form.php" method="post" class="form-example" id="form">
   <div class="form-example">
     <label for="name">Nome: </label>
     <input type="text" name="name" id="name" required />
+  </div> 
+   <div class="form-example">
+    <label for="name">password: </label>
+    <input type="password" name="password" id="password" required />
   </div>
-  <div class="form-example">
-    <label for="last-name">Cognome: </label>
-    <input type="text" name="last-name" id="last-name" required />
-  </div>
-  <div class="form-example">
-    <label for="email">Email: </label>
-    <input type="email" name="email" id="email" required />
-  </div>
+
   <div class="form-example">
     <input type="submit" name="submit" value="invia" />
   </div>
@@ -63,15 +60,27 @@
 
     const formData = new FormData(form);
     formData.append("submit", "true");
-    console.log(formData)
+
     try {
       document.getElementById("form").innerHTML = "<div class=\"loader \"></div>"
-      const response = await fetch("api/test_form_email.php", {
+
+      // con query params
+      // const params = new URLSearchParams(formData);
+      // const response = await fetch("api/test_form_email.php?"+params);   
+
+
+      const response = await fetch("api/test_form.php", {
         method: "POST",
         body: formData,
       });
-      console.log(await response.json());
+
+
+      oggetto_risposta = await response.json()
+
+      console.log(oggetto_risposta.registered)
+
       document.getElementById("form").innerHTML = "<h1>Ben fatto form inviato</h1>"
+
     } catch (e) {
       console.error(e);
     }
